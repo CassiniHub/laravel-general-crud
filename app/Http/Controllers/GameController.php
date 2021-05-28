@@ -80,7 +80,11 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        
+        $game = Game::findOrFail($id);
+
+        return view('pages.games.edit', compact(
+            'game'
+        ));
     }
 
     /**
@@ -92,7 +96,13 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $game = Game::findOrFail($id);
+
+        $validate = $request -> validate($this -> getValidationRules());
+
+        $game -> update($validate);
+
+        return redirect() -> route('games.show', $game -> id);
     }
 
     /**

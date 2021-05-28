@@ -11,7 +11,7 @@
                 <a href="{{ route('games.show', $game -> id) }}">
                     {{ $game -> team1 }} - {{ $game -> team2 }}
                 </a>
-                <a href="">
+                <a href="{{ route('games.edit', $game -> id) }}">
                     &#9998;
                 </a>
                 <a href="">
