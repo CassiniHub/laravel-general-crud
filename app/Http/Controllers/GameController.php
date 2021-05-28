@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+    public function getValidationRules() {
+        return [
+            'team1' => 'required|string|min:3|max:255',
+            'team2' => 'required|string|min:3|max:255',
+            'point1' => 'required|integer|min:0|max:130',
+            'point2' => 'required|integer|min:0|max:130',
+            'result' => 'required|boolean'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +38,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.games.create');
     }
 
     /**
@@ -39,7 +49,12 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request -> validate($this -> getValidationRules());
+        
+        $match = Game::create($validate);
+        dd($match);
+
+        return redirect() -> route('games.show', $match -> id);
     }
 
     /**
@@ -65,7 +80,7 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
