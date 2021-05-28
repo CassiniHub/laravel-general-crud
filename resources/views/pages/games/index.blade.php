@@ -15,10 +15,6 @@
                 <a href="{{ route('games.edit', $game -> id) }}">
                     &#9998;
                 </a>
-
-                <a href="{{ route('games.destroy', $game -> id) }}">
-                    &#10060;
-                </a>
             </li>
         @endforeach
     </ul>

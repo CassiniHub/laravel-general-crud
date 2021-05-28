@@ -7,4 +7,10 @@
     <h2>
         The winner is: {{ ($game -> result) ? 'Team 1' : 'Team 2'}}
     </h2>
+    <form action="{{ route('games.destroy', $game -> id) }}" method="POST">
+        @method('DELETE')
+        @csrf
+
+        <button type="submit">Delete</button>
+    </form>
 @endsection
