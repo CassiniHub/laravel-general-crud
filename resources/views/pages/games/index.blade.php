@@ -8,7 +8,7 @@
     <ul>
         @foreach ($games as $game)
             <li>
-                <a href="">
+                <a href="{{ route('games.show', $game -> id) }}">
                     {{ $game -> team1 }} - {{ $game -> team2 }}
                 </a>
             </li>

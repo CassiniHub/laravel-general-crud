@@ -50,7 +50,11 @@ class GameController extends Controller
      */
     public function show($id)
     {
-        //
+        $game = Game::findOrFail($id);
+
+        return view('pages.games.show', compact(
+            'game'
+        ));
     }
 
     /**
