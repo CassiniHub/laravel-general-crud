@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -13,7 +14,11 @@ class GameController extends Controller
      */
     public function index()
     {
-        return view('games.index');
+        $games = Game::all();
+
+        return view('pages.games.index', compact(
+            'games'
+        ));
     }
 
     /**
